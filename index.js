@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs')
 
 const Users = require('./users/users-model')
 
+const restricted = require('./middleware/restricted-middleware')
+
 const port = process.env.PORT || 5005;
 server.listen(port, ()=> console.log(`Running on port ${port}`))
 
@@ -15,6 +17,7 @@ server.get('/', (req,res)=> {
 
 server.post('/api/register', (req,res)=> {
     let {username, password} = req.body; 
+    console.log(username, password)
     const hash = bcrypt.hashSync(password, 12)
 
     Users.add({username, password:hash})
@@ -41,4 +44,12 @@ server.post('/api/login', (req,res)=> {
         .catch(err => {
             res.status(500).json(err)
         })
+})
+
+server.get('/api/users', restricted, (req,res) => {
+    Users.find()
+        .then(users=> {
+            res.json(users);
+        })
+        .catch(err => res.send(err))
 })

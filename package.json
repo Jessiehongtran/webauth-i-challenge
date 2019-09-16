@@ -1,0 +1,23 @@
+{
+  "name": "webauth-i-challenge",
+  "version": "1.0.0",
+  "description": "## Topics",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jessiehongtran/webauth-i-challenge.git"
+  },
+  "author": "Hong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jessiehongtran/webauth-i-challenge/issues"
+  },
+  "homepage": "https://github.com/Jessiehongtran/webauth-i-challenge#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.2"
+  }
+}
